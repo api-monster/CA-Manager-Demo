@@ -1,0 +1,22 @@
+services:
+  ca-manager-demo:
+    image: ${CA_MANAGER_DEMO_IMAGE:-apimonster/ca-manager-demo:latest}
+    container_name: ca-manager-demo
+    restart: unless-stopped
+    ports:
+      - "${CA_MANAGER_DEMO_PORT:-8585}:8585"
+    environment:
+      SESSION_SECRET: ${SESSION_SECRET:?SESSION_SECRET is required}
+      KEY_ENCRYPTION_SECRET: ${KEY_ENCRYPTION_SECRET:?KEY_ENCRYPTION_SECRET is required}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?MYSQL_ROOT_PASSWORD is required}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?MYSQL_PASSWORD is required}
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-false}
+      CA_MANAGER_DEMO_SEED: ${CA_MANAGER_DEMO_SEED:-true}
+      CA_MANAGER_DEMO_ADMIN_EMAIL: ${CA_MANAGER_DEMO_ADMIN_EMAIL:-admin@acme.com}
+      CA_MANAGER_DEMO_ADMIN_PASSWORD: ${CA_MANAGER_DEMO_ADMIN_PASSWORD:-ChangeMe!8585}
+      CA_MANAGER_DEMO_ADMIN_NAME: ${CA_MANAGER_DEMO_ADMIN_NAME:-Acme Demo Admin}
+    volumes:
+      - ca-manager-demo-data:/var/lib/mysql
+
+volumes:
+  ca-manager-demo-data:
