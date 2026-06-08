@@ -4,6 +4,8 @@ CA Manager Demo is a self-contained Docker image for evaluating CA Manager in la
 
 The image runs CA Manager in production mode with a bundled MySQL 8 database. On first startup, it initializes the schema, creates a demo administrator, and preloads an Acme Corp lab PKI inventory so the UI is ready to explore immediately.
 
+Public demo files and documentation: [api-monster/CA-Manager-Demo](https://github.com/api-monster/CA-Manager-Demo)
+
 ## What Is Included
 
 - CA Manager web UI and API in one container
